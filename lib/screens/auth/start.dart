@@ -6,53 +6,72 @@ class WelcomePage extends StatefulWidget{
 }
 
 class _WelcomePageState extends State<WelcomePage>{
+
+  final TextEditingController _number = new TextEditingController();
+  final TextEditingController _email = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    final email = TextFormField(
-      keyboardType: TextInputType.emailAddress,
-      autofocus: false,
-      initialValue: 'alucard@gmail.com',
-      decoration: InputDecoration(
-        hintText: 'Email',
-        contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(4.0)),
-      ),
-    );
+    Widget email() => new Container(
+    alignment: new Alignment(0.5, 0.5),
+    height: 46.0,
+    margin: const EdgeInsets.only(left: 40.0,right: 40.0,bottom: 20.0),
+    padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
+        decoration:
+            new BoxDecoration(
+                borderRadius: new BorderRadius.all(const Radius.circular(4.0)),
+                border: new Border.all(color: Colors.white),
+                color: Colors.white
+              ),
+        child: new TextField(
+          controller: _email,
+          decoration: new InputDecoration.collapsed(hintText: "Email"),
+          keyboardType: TextInputType.emailAddress,
+        ),
+      );
 
-    final password = TextFormField(
-      autofocus: false,
-      initialValue: 'some password',
-      obscureText: true,
-      decoration: InputDecoration(
-        hintText: 'Password',
-        contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(4.0)),
-      ),
-    );
-
+Widget number() => new Container(
+    alignment: new Alignment(0.5, 0.5),
+    height: 46.0,
+    margin: const EdgeInsets.only(left: 40.0,right: 40.0,bottom: 20.0),
+    padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
+        decoration:
+            new BoxDecoration(
+                borderRadius: new BorderRadius.all(const Radius.circular(4.0)),
+                border: new Border.all(color: Colors.white),
+                color: Colors.white
+              ),
+        child: new TextField(
+          controller: _number,
+          decoration: new InputDecoration.collapsed(hintText: "Phone number"),
+          keyboardType: TextInputType.phone,
+        ),
+      );
+    
     final loginButton = Padding(
-      padding: EdgeInsets.symmetric(vertical: 16.0),
+      // padding: EdgeInsets.symmetric(vertical: 16.0),
+      padding: EdgeInsets.only(left: 40.0, right: 40.0),
       child: Material(
-        borderRadius: BorderRadius.circular(30.0),
+        borderRadius: BorderRadius.circular(4.0),
         shadowColor: Colors.white,
-        elevation: 5.0,
+        elevation: 2.0,
         child: MaterialButton(
-          minWidth: 200.0,
-          height: 42.0,
+          minWidth: 400.0,
+          height: 46.0,
           onPressed: () {
-            // Navigator.of(context).pushNamed(HomePage.tag);
+          Navigator.of(context).pushReplacementNamed("/confirm");
           },
           color: Colors.white,
-          child: Text('Log In', style: TextStyle(color: Colors.black)),
+          child: Text(' SEND', style: TextStyle(color: Colors.black)),
         ),
       ),
     );
 
     final forgotLabel = FlatButton(
       child: Text(
-        'Forgot password?',
-        style: TextStyle(color: Colors.black54),
+        'Already have an account?',
+        style: TextStyle(color: Colors.white),
       ),
       onPressed: () {},
     );
@@ -60,19 +79,24 @@ class _WelcomePageState extends State<WelcomePage>{
     return Scaffold(
       backgroundColor: Colors.indigo,
       body: Center(
-        child: ListView(
-          shrinkWrap: true,
-          padding: EdgeInsets.only(left: 24.0, right: 24.0),
-          children: <Widget>[
-            SizedBox(height: 48.0),
-            email,
-            SizedBox(height: 8.0),
-            password,
-            SizedBox(height: 24.0),
-            loginButton,
-            forgotLabel
-          ],
-        ),
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+
+         children: <Widget>[
+           Padding(
+             padding: EdgeInsets.all(20.0),
+             child: Text('Enter your phone number and email to recieve comfirmation code from smartcity',
+              style: TextStyle(fontSize: 16.0, color: Colors.white),
+              textAlign: TextAlign.center,
+            )
+           ),
+           number(),
+           email(),
+           loginButton,
+           forgotLabel
+         ] 
+        )
       ),
     );
   }
