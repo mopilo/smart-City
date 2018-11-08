@@ -77,26 +77,50 @@ Widget number() => new Container(
     );
 
     return Scaffold(
-      backgroundColor: Colors.indigo,
       body: Center(
-        child: new Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child:  Container(
+          alignment: Alignment.center,
+          color: Colors.indigo,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-
-         children: <Widget>[
-           Padding(
-             padding: EdgeInsets.all(20.0),
-             child: Text('Enter your phone number and email to recieve comfirmation code from smartcity',
-              style: TextStyle(fontSize: 16.0, color: Colors.white),
-              textAlign: TextAlign.center,
-            )
-           ),
-           number(),
-           email(),
-           loginButton,
-           forgotLabel
-         ] 
-        )
+            children: <Widget>[
+              Expanded(
+                flex: 3,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    //image here
+                  ],
+                ),
+              ),
+              Expanded(
+                flex: 8,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children:<Widget> [
+                    Padding(
+                      padding: EdgeInsets.all(20.0),
+                      child: Text('Enter your phone number and email to recieve comfirmation code from smartcity',
+                        style: TextStyle(fontSize: 16.0, color: Colors.white),
+                        textAlign: TextAlign.center,
+                      )
+                    ),
+                    number(),
+                    email(),
+                    loginButton,
+                  ]
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: forgotLabel,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

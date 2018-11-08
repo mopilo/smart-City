@@ -62,24 +62,49 @@ Widget number() => new Container(
     return Scaffold(
       backgroundColor: Colors.indigo,
       body: Center(
-        child: new Column(
+        child: Container(
+          alignment: Alignment.center,
+          color: Colors.indigo,
+          child: new Column(
           mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-
+          crossAxisAlignment: CrossAxisAlignment.center,
          children: <Widget>[
-           Padding(
-             padding: EdgeInsets.all(30.0),
-             child: Text('Enter the 4-digit code you recieved from email and click confirm',
-              style: TextStyle(fontSize: 16.0, color: Colors.white),
-              textAlign: TextAlign.center,
-            )
+           Expanded(
+             flex: 3,
+             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+               children: <Widget>[
+                 //image here
+               ],
+             ),
            ),
-           number(),
-          //  email(),
-           loginButton,
-           forgotLabel
+           Expanded(
+             flex: 8,
+             child: Column(
+               mainAxisAlignment: MainAxisAlignment.center,
+               crossAxisAlignment: CrossAxisAlignment.center,
+               children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.all(30.0),
+                  child: Text('Enter the 4-digit code you recieved from email and click confirm',
+                    style: TextStyle(fontSize: 16.0, color: Colors.white),
+                    textAlign: TextAlign.center,
+                  )
+                ),
+                number(),
+                loginButton,
+               ],
+             ),
+           ),
+           Expanded(
+            flex: 1,
+            child: forgotLabel
+          )
          ] 
         )
+        ),
+        
       ),
     );
   }
