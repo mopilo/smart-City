@@ -43,7 +43,7 @@ Widget number() => new Container(
           minWidth: 400.0,
           height: 46.0,
           onPressed: () {
-            // Navigator.of(context).pushNamed(HomePage.tag);
+            Navigator.of(context).pushReplacementNamed("/register");
           },
           color: Colors.white,
           child: Text(' CONFIRM', style: TextStyle(color: Colors.black)),
@@ -64,7 +64,7 @@ Widget number() => new Container(
       body: Center(
         child: Container(
           alignment: Alignment.center,
-          color: Colors.indigo,
+          // color: Colors.indigo,
           child: new Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
