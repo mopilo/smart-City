@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 
 import 'package:smart_city/screens/auth/start.dart';
 import 'package:smart_city/screens/auth/confirm.dart';
+import 'package:smart_city/screens/auth/register.dart';
+import 'package:smart_city/screens/auth/login.dart';
 
 
 void main() {
@@ -26,7 +28,9 @@ class MyApp extends StatelessWidget {
       home: new WelcomePage(),
       routes: <String, WidgetBuilder>{
         "/start": (BuildContext context) => new WelcomePage(),
-        "/confirm": (BuildContext context) => new ConfirmationPage()
+        "/confirm": (BuildContext context) => new ConfirmationPage(),
+        "/register": (BuildContext context) => new RegisterPage(),
+        "/login": (BuildContext context) => new LoginPage()
       }
     );
   }
