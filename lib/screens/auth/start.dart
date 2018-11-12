@@ -12,7 +12,6 @@ class _WelcomePageState extends State<WelcomePage>{
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     Widget email() => new Container(
     alignment: new Alignment(0.5, 0.5),
     height: 46.0,

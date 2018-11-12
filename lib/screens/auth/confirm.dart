@@ -9,11 +9,9 @@ class ConfirmationPage extends StatefulWidget{
 class _ConfirmationPageState extends State<ConfirmationPage>{
 
   final TextEditingController _number = new TextEditingController();
-  final TextEditingController _email = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
 Widget number() => new Container(
     alignment: new Alignment(0.5, 0.5),
     height: 46.0,

@@ -13,7 +13,6 @@ class _LoginPageState extends State<LoginPage>{
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
   Widget userName() => new Container(
     alignment: new Alignment(0.5, 0.5),
     height: 46.0,
