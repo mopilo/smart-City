@@ -47,6 +47,7 @@ class _LoginPageState extends State<LoginPage>{
           controller: _password,
           decoration: new InputDecoration.collapsed(hintText: "password"),
           keyboardType: TextInputType.text,
+          obscureText: true,
         ),
     );
     
@@ -61,7 +62,7 @@ class _LoginPageState extends State<LoginPage>{
           minWidth: 400.0,
           height: 46.0,
           onPressed: () {
-            // Navigator.of(context).pushReplacementNamed("/register");
+            Navigator.of(context).pushReplacementNamed("/tabs");
           },
           color: Colors.white,
           child: Text(' LOGIN', style: TextStyle(color: Colors.black)),
