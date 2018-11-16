@@ -18,18 +18,17 @@ class _LoginPageState extends State<LoginPage>{
     height: 46.0,
     margin: const EdgeInsets.only(left: 40.0,right: 40.0,bottom: 20.0),
     padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
-        decoration:
-            new BoxDecoration(
-                borderRadius: new BorderRadius.all(const Radius.circular(4.0)),
-                border: new Border.all(color: Colors.white),
-                color: Colors.white
-              ),
-        child: new TextField(
-          controller: _username,
-          decoration: new InputDecoration.collapsed(hintText: "username"),
-          keyboardType: TextInputType.text,
-        ),
-      );
+    decoration:new BoxDecoration(
+        borderRadius: new BorderRadius.all(const Radius.circular(4.0)),
+        border: new Border.all(color: Colors.white),
+        color: Colors.white
+      ),
+      child: new TextField(
+        controller: _username,
+        decoration: new InputDecoration.collapsed(hintText: "username"),
+        keyboardType: TextInputType.text,
+      ),
+    );
 
     Widget urPassword() => new Container(
     alignment: new Alignment(0.5, 0.5),

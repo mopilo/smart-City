@@ -9,7 +9,6 @@ class ConfirmationPage extends StatefulWidget{
 class _ConfirmationPageState extends State<ConfirmationPage>{
 
   final TextEditingController _number = new TextEditingController();
-
   @override
   Widget build(BuildContext context) {
 Widget number() => new Container(
@@ -19,17 +18,16 @@ Widget number() => new Container(
     padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
         decoration:
             new BoxDecoration(
-                borderRadius: new BorderRadius.all(const Radius.circular(4.0)),
-                border: new Border.all(color: Colors.white),
-                color: Colors.white
-              ),
+              borderRadius: new BorderRadius.all(const Radius.circular(4.0)),
+              border: new Border.all(color: Colors.white),
+              color: Colors.white
+            ),
         child: new TextField(
           controller: _number,
           decoration: new InputDecoration.collapsed(hintText: "Token"),
           keyboardType: TextInputType.phone,
         ),
       );
-    
     final loginButton = Padding(
       // padding: EdgeInsets.symmetric(vertical: 16.0),
       padding: EdgeInsets.only(left: 40.0, right: 40.0),
