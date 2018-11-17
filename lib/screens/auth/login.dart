@@ -59,66 +59,83 @@ class _LoginPageState extends State<LoginPage>{
         child: MaterialButton(
           minWidth: 400.0,
           height: 46.0,
-          onPressed: () {
-            Navigator.of(context).pushReplacementNamed("/tabs");
-          },
-          color: Colors.white,
-          child: Text(' LOGIN', style: TextStyle(color: Colors.black)),
-        ),
-      ),
-    );
+          onPressed: signin,
+                    
+                    color: Colors.white,
+                    child: Text(' LOGIN', style: TextStyle(color: Colors.black)),
+                  ),
+                ),
+              );
+          
+              final forgotLabel = FlatButton(
+                child: Text(
+                  'Don"t have an account?',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () {
+                    Navigator.of(context).pushReplacementNamed("/register");
+                },
+              );
+          
+              return Scaffold(
+                backgroundColor: Colors.indigo,
+                body: Center(
+                  child: Container(
+                    alignment: Alignment.center,
+                    // color: Colors.indigo,
+                    child: new Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                   children: <Widget>[
+                     Expanded(
+                       flex: 3,
+                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                         children: <Widget>[
+                           //image here
+                         ],
+                       ),
+                     ),
+                     Expanded(
+                       flex: 8,
+                       child: Column(
+                         mainAxisAlignment: MainAxisAlignment.center,
+                         crossAxisAlignment: CrossAxisAlignment.center,
+                         children: <Widget>[
+                          userName(),
+                          urPassword(),
+                          loginButton,
+                         ],
+                       ),
+                     ),
+                     Expanded(
+                      flex: 1,
+                      child: forgotLabel
+                    )
+                   ] 
+                  )
+                  ),
+                  
+                ),
+              );
+            }
+          
+  Future<String> signin() async{
+    var user = _username.text.trim();
+    var pass = _password.text.trim();
 
-    final forgotLabel = FlatButton(
-      child: Text(
-        'Don"t have an account?',
-        style: TextStyle(color: Colors.white),
-      ),
-      onPressed: () {
-          Navigator.of(context).pushReplacementNamed("/register");
-      },
-    );
-
-    return Scaffold(
-      backgroundColor: Colors.indigo,
-      body: Center(
-        child: Container(
-          alignment: Alignment.center,
-          // color: Colors.indigo,
-          child: new Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-         children: <Widget>[
-           Expanded(
-             flex: 3,
-             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-               children: <Widget>[
-                 //image here
-               ],
-             ),
-           ),
-           Expanded(
-             flex: 8,
-             child: Column(
-               mainAxisAlignment: MainAxisAlignment.center,
-               crossAxisAlignment: CrossAxisAlignment.center,
-               children: <Widget>[
-                userName(),
-                urPassword(),
-                loginButton,
-               ],
-             ),
-           ),
-           Expanded(
-            flex: 1,
-            child: forgotLabel
-          )
-         ] 
-        )
-        ),
-        
-      ),
-    );
-  }
+    if(user == '' || pass == '' ){
+        AlertDialog alertDialog = new AlertDialog(
+          title: new Text("Input can't be empty"),
+          actions: <Widget>[
+            new FlatButton(onPressed: () => Navigator.pop(context), child: Text('OK'),)
+          ],
+        );
+        showDialog(context: context, child: alertDialog);
+      }
+      else{
+        Navigator.of(context).pushReplacementNamed("/tabs");
+      }  
+    }
 }

@@ -58,69 +58,112 @@ Widget number() => new Container(
         child: MaterialButton(
           minWidth: 400.0,
           height: 46.0,
-          onPressed: () {
-          Navigator.of(context).pushReplacementNamed("/confirm");
-          },
-          color: Colors.white,
-          child: Text(' SEND', style: TextStyle(color: Colors.black)),
-        ),
-      ),
-    );
-
-    final forgotLabel = FlatButton(
-      child: Text(
-        'Already have an account?',
-        style: TextStyle(color: Colors.white),
-      ),
-      onPressed: () {},
-    );
-
-    return Scaffold(
-      body: Center(
-        child:  Container(
-          alignment: Alignment.center,
-          color: Colors.indigo,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Expanded(
-                flex: 3,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    //image here
-                  ],
+          onPressed: welcome,
+                    // Navigator.of(context).pushReplacementNamed("/confirm");
+                    
+                    color: Colors.white,
+                    child: Text(' SEND', style: TextStyle(color: Colors.black)),
+                  ),
                 ),
-              ),
-              Expanded(
-                flex: 8,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children:<Widget> [
-                    Padding(
-                      padding: EdgeInsets.all(20.0),
-                      child: Text('Enter your phone number and email to recieve comfirmation code from smartcity',
-                        style: TextStyle(fontSize: 16.0, color: Colors.white),
-                        textAlign: TextAlign.center,
-                      )
+              );
+          
+              final forgotLabel = FlatButton(
+                child: Text(
+                  'Already have an account?',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () {},
+              );
+          
+              return Scaffold(
+                body: Center(
+                  child:  Container(
+                    alignment: Alignment.center,
+                    color: Colors.indigo,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Expanded(
+                          flex: 3,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              //image here
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          flex: 8,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children:<Widget> [
+                              Padding(
+                                padding: EdgeInsets.all(20.0),
+                                child: Text('Enter your phone number and email to recieve comfirmation code from smartcity',
+                                  style: TextStyle(fontSize: 16.0, color: Colors.white),
+                                  textAlign: TextAlign.center,
+                                )
+                              ),
+                              number(),
+                              email(),
+                              loginButton,
+                            ]
+                          ),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: forgotLabel,
+                        ),
+                      ],
                     ),
-                    number(),
-                    email(),
-                    loginButton,
-                  ]
+                  ),
                 ),
-              ),
-              Expanded(
-                flex: 1,
-                child: forgotLabel,
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
+              );
+            }
+          
+    Future <String> welcome() async {
+      String regEmail = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+      var email = _email.text.trim();
+      var phone = _number.text.trim();
+
+      RegExp exp = new RegExp(regEmail);
+      
+      if(email == '' || phone == '' ){
+        AlertDialog alertDialog = new AlertDialog(
+          title: new Text("Input can't be empty"),
+          actions: <Widget>[
+            new FlatButton(onPressed: () => Navigator.pop(context), child: Text('OK'),)
+          ],
+        );
+        showDialog(context: context, child: alertDialog);
+      }
+
+      else if(!exp.hasMatch(email)){
+        AlertDialog alertDialog = new AlertDialog(
+          title: new Text('Email is not valid'),
+          actions: <Widget>[
+            new FlatButton(onPressed: () => Navigator.pop(context), child: Text('OK'),)
+          ],
+        );
+        showDialog(context: context, child: alertDialog);
+      }
+
+      else if(phone.length < 1 ){
+        AlertDialog alertDialog = new AlertDialog(
+          title: new Text("Enter a valid phone number."),
+          actions: <Widget>[
+            new FlatButton(onPressed: () => Navigator.pop(context), child: Text('OK'),)
+          ],
+        );
+        showDialog(context: context, child: alertDialog);
+      }
+
+      else{
+        Navigator.of(context).pushReplacementNamed("/confirm");
+      }
+
+    }
 }

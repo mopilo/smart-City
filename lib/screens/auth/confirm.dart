@@ -38,70 +38,95 @@ Widget number() => new Container(
         child: MaterialButton(
           minWidth: 400.0,
           height: 46.0,
-          onPressed: () {
-            Navigator.of(context).pushReplacementNamed("/register");
-          },
-          color: Colors.white,
-          child: Text(' CONFIRM', style: TextStyle(color: Colors.black)),
-        ),
-      ),
-    );
-
-    final forgotLabel = FlatButton(
-      child: Text(
-        'Already have an account?',
-        style: TextStyle(color: Colors.white),
-      ),
-      onPressed: () {},
-    );
-
-    return Scaffold(
-      backgroundColor: Colors.indigo,
-      body: Center(
-        child: Container(
-          alignment: Alignment.center,
-          // color: Colors.indigo,
-          child: new Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-         children: <Widget>[
-           Expanded(
-             flex: 3,
-             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-               children: <Widget>[
-                 //image here
-               ],
-             ),
-           ),
-           Expanded(
-             flex: 8,
-             child: Column(
-               mainAxisAlignment: MainAxisAlignment.center,
-               crossAxisAlignment: CrossAxisAlignment.center,
-               children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.all(30.0),
-                  child: Text('Enter the 4-digit code you recieved from email and click confirm',
-                    style: TextStyle(fontSize: 16.0, color: Colors.white),
-                    textAlign: TextAlign.center,
-                  )
+          onPressed: confirm,
+                      // Navigator.of(context).pushReplacementNamed("/register");
+                    color: Colors.white,
+                    child: Text(' CONFIRM', style: TextStyle(color: Colors.black)),
+                  ),
                 ),
-                number(),
-                loginButton,
-               ],
-             ),
-           ),
-           Expanded(
-            flex: 1,
-            child: forgotLabel
-          )
-         ] 
-        )
-        ),
-        
-      ),
-    );
-  }
+              );
+          
+              final forgotLabel = FlatButton(
+                child: Text(
+                  'Already have an account?',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () {},
+              );
+          
+              return Scaffold(
+                backgroundColor: Colors.indigo,
+                body: Center(
+                  child: Container(
+                    alignment: Alignment.center,
+                    // color: Colors.indigo,
+                    child: new Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                   children: <Widget>[
+                     Expanded(
+                       flex: 3,
+                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                         children: <Widget>[
+                           //image here
+                         ],
+                       ),
+                     ),
+                     Expanded(
+                       flex: 8,
+                       child: Column(
+                         mainAxisAlignment: MainAxisAlignment.center,
+                         crossAxisAlignment: CrossAxisAlignment.center,
+                         children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.all(30.0),
+                            child: Text('Enter the 4-digit code you recieved from email and click confirm',
+                              style: TextStyle(fontSize: 16.0, color: Colors.white),
+                              textAlign: TextAlign.center,
+                            )
+                          ),
+                          number(),
+                          loginButton,
+                         ],
+                       ),
+                     ),
+                     Expanded(
+                      flex: 1,
+                      child: forgotLabel
+                    )
+                   ] 
+                  )
+                  ),
+                  
+                ),
+              );
+            }
+          
+    Future<String> confirm() async{
+      var token = _number.text.trim();
+      if(token == ''){
+        AlertDialog alertDialog = new AlertDialog(
+          title: new Text("Input can't be empty"),
+          actions: <Widget>[
+            new FlatButton(onPressed: () => Navigator.pop(context), child: Text('OK'),)
+          ],
+        );
+        showDialog(context: context, child: alertDialog);
+      }
+      else if(token.length < 2){
+        AlertDialog alertDialog = new AlertDialog(
+          title: new Text('The token must be atleast 4 characters'),
+          actions: <Widget>[
+            new FlatButton(onPressed: () => Navigator.pop(context), child: Text('OK'),)
+          ],
+        );
+        showDialog(context: context, child: alertDialog);
+      }
+      else{
+        Navigator.of(context).pushReplacementNamed("/register");
+      }
+
+    }
 }
