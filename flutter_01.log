@@ -1,0 +1,93 @@
+Flutter crash report; please file at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter packages get
+
+## exception
+
+YamlException: Error on line 20, column 3: Expected ':'.
+  # The following adds the Cupertino Icons font to your application.
+  ^
+
+```
+#0      Scanner._staleSimpleKeys (package:yaml/src/scanner.dart:491:9)
+#1      Scanner._fetchMoreTokens (package:yaml/src/scanner.dart:325:9)
+#2      Scanner.peek (package:yaml/src/scanner.dart:317:27)
+#3      Parser._parseBlockMappingKey (package:yaml/src/parser.dart:418:26)
+#4      Parser._stateMachine (package:yaml/src/parser.dart:86:16)
+#5      Parser.parse (package:yaml/src/parser.dart:47:19)
+#6      Loader._loadMapping (package:yaml/src/loader.dart:171:23)
+#7      Loader._loadNode (package:yaml/src/loader.dart:86:16)
+#8      Loader._loadMapping (package:yaml/src/loader.dart:165:19)
+#9      Loader._loadNode (package:yaml/src/loader.dart:86:16)
+#10     Loader._loadMapping (package:yaml/src/loader.dart:165:19)
+#11     Loader._loadNode (package:yaml/src/loader.dart:86:16)
+#12     Loader._loadDocument (package:yaml/src/loader.dart:62:20)
+#13     Loader.load (package:yaml/src/loader.dart:54:20)
+#14     loadYamlDocument (package:yaml/yaml.dart:51:25)
+#15     loadYamlNode (package:yaml/yaml.dart:42:5)
+#16     loadYaml (package:yaml/yaml.dart:34:5)
+#17     _pluginFromPubspec (package:flutter_tools/src/plugins.dart:62:27)
+#18     findPlugins.<anonymous closure> (package:flutter_tools/src/plugins.dart:85:27)
+#19     __InternalLinkedHashMap&_HashVMBase&MapMixin&_LinkedHashMapMixin.forEach (dart:collection/runtime/libcompact_hash.dart:370:8)
+#20     findPlugins (package:flutter_tools/src/plugins.dart:83:12)
+#21     refreshPluginsList (package:flutter_tools/src/plugins.dart:287:32)
+#22     FlutterProject.ensureReadyForPlatformSpecificTooling (package:flutter_tools/src/project.dart:139:5)
+<asynchronous suspension>
+#23     PackagesGetCommand.runCommand (package:flutter_tools/src/commands/packages.dart:84:23)
+<asynchronous suspension>
+#24     FlutterCommand.verifyThenRunCommand (package:flutter_tools/src/runner/flutter_command.dart:383:18)
+#25     _asyncThenWrapperHelper.<anonymous closure> (dart:async/runtime/libasync_patch.dart:77:64)
+#26     _rootRunUnary (dart:async/zone.dart:1132:38)
+#27     _CustomZone.runUnary (dart:async/zone.dart:1029:19)
+#28     _FutureListener.handleValue (dart:async/future_impl.dart:129:18)
+#29     Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:642:45)
+#30     Future._propagateToListeners (dart:async/future_impl.dart:671:32)
+#31     Future._complete (dart:async/future_impl.dart:476:7)
+#32     _SyncCompleter.complete (dart:async/future_impl.dart:51:12)
+#33     _AsyncAwaitCompleter.complete.<anonymous closure> (dart:async/runtime/libasync_patch.dart:33:20)
+#34     _rootRun (dart:async/zone.dart:1124:13)
+#35     _CustomZone.run (dart:async/zone.dart:1021:19)
+#36     _CustomZone.bindCallback.<anonymous closure> (dart:async/zone.dart:947:23)
+#37     _microtaskLoop (dart:async/schedule_microtask.dart:41:21)
+#38     _startMicrotaskLoop (dart:async/schedule_microtask.dart:50:5)
+#39     _runPendingImmediateCallback (dart:isolate/runtime/libisolate_patch.dart:115:13)
+#40     _RawReceivePortImpl._handleMessage (dart:isolate/runtime/libisolate_patch.dart:172:5)
+```
+
+## flutter doctor
+
+```
+[✓] Flutter (Channel beta, v0.10.2, on Mac OS X 10.13.6 17G65, locale en-NG)
+    • Flutter version 0.10.2 at /Users/mac/documents/development/flutter
+    • Framework revision d8cbb80206 (3 weeks ago), 2018-10-26 01:30:21 -0400
+    • Engine revision 6c2ade9fa2
+    • Dart version 2.1.0-dev.8.0.flutter-bf26f760b1
+
+[✓] Android toolchain - develop for Android devices (Android SDK 28.0.3)
+    • Android SDK at /Users/mac/Library/Android/sdk
+    • Android NDK at /Users/mac/Library/Android/sdk/ndk-bundle
+    • Platform android-28, build-tools 28.0.3
+    • ANDROID_HOME = /Users/mac/Library/Android/sdk
+    • Java binary at: /Applications/Android Studio.app/Contents/jre/jdk/Contents/Home/bin/java
+    • Java version OpenJDK Runtime Environment (build 1.8.0_152-release-915-b08)
+    • All Android licenses accepted.
+
+[✓] iOS toolchain - develop for iOS devices (Xcode 10.0)
+    • Xcode at /Applications/Xcode.app/Contents/Developer
+    • Xcode 10.0, Build version 10A255
+    • ios-deploy 2.0.0
+    • CocoaPods version 1.5.3
+
+[✓] Android Studio (version 3.0)
+    • Android Studio at /Applications/Android Studio.app/Contents
+    ✗ Flutter plugin not installed; this adds Flutter specific functionality.
+    ✗ Dart plugin not installed; this adds Dart specific functionality.
+    • Java version OpenJDK Runtime Environment (build 1.8.0_152-release-915-b08)
+
+[✓] Connected device (1 available)
+    • Android SDK built for x86 • emulator-5554 • android-x86 • Android 8.1.0 (API 27) (emulator)
+
+• No issues found!
+```

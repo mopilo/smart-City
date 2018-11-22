@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TopUpPage extends StatelessWidget{
-  
+class TopUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +64,7 @@ class TopUpPage extends StatelessWidget{
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Container(
-                            margin: EdgeInsets.only(top: 5, left:  20, right: 30),
+              margin: EdgeInsets.only(top: 5, left: 20, right: 30),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -81,9 +80,12 @@ class TopUpPage extends StatelessWidget{
                           decoration: BoxDecoration(
                             color: Colors.indigo,
                           ),
-                          child: Icon(
-                            Icons.add_location,
-                            color: Colors.white,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text('100', style: TextStyle(color: Colors.white, fontSize: 16),),
+                              Text('tokens', style: TextStyle(color: Colors.white, fontSize: 12),),
+                            ],
                           ),
                         )),
                   ),
@@ -92,24 +94,25 @@ class TopUpPage extends StatelessWidget{
                     child: Container(
                       height: 70,
                       alignment: Alignment.centerLeft,
-                      decoration: BoxDecoration(color: Colors.black12),
+                      decoration: BoxDecoration(color: Color(0XFFFCFCFC)),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Container(
                             alignment: Alignment.centerLeft,
-                            margin: EdgeInsets.all(2),
+                            margin: EdgeInsets.only(left: 10, bottom: 4),
                             child: (Text(
-                              'Choose Zone',
-                              style: TextStyle(fontSize: 14),
+                              'N1000',
+                              style: TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.w800),
                             )),
                           ),
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Padding(
-                              padding: EdgeInsets.all(2),
-                              child: (Text('Touch here to set your zone',
-                                  style: TextStyle(fontSize: 10))),
+                              padding: EdgeInsets.only(left: 10),
+                              child: (Text('Get 100 tokens for N1000 ',
+                                  style: TextStyle(fontSize: 10)))
                             ),
                           ),
                         ],
@@ -135,25 +138,27 @@ class TopUpPage extends StatelessWidget{
             // second
 
             Container(
-              margin: EdgeInsets.only(top: 5, left:  20, right: 30),
+              margin: EdgeInsets.only(top: 5, left: 20, right: 30),
               child: Row(
                 children: <Widget>[
                   Container(
                     // alignment: Alignment.center,
                     child: Expanded(
-                      flex: 2,
-                      child: Container(
-                        height: 70,
-                        width: 150,
-                        decoration: BoxDecoration(
-                          color: Colors.indigo,
-                        ),
-                        child: Icon(
-                          Icons.directions_car,
-                          color: Colors.white,
-                        ),
-                      )
-                    ),
+                        flex: 2,
+                        child: Container(
+                          height: 70,
+                          width: 150,
+                          decoration: BoxDecoration(
+                            color: Colors.indigo,
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text('500', style: TextStyle(color: Colors.white, fontSize: 16),),
+                              Text('tokens', style: TextStyle(color: Colors.white, fontSize: 12),),
+                            ],
+                          ),
+                        )),
                   ),
                   Expanded(
                     flex: 4,
@@ -164,24 +169,25 @@ class TopUpPage extends StatelessWidget{
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Container(
-                            margin: EdgeInsets.all(2),
+                            margin: EdgeInsets.only(left: 10, bottom: 4),
                             alignment: Alignment.centerLeft,
                             child: (Text(
-                              'Choose Vehicle',
-                              style: TextStyle(fontSize: 14),
+                              'N3000',
+                              style: TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.w800),
                             )),
                           ),
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Padding(
-                              padding: EdgeInsets.all(2),
-                              child: (Text('Touch here to set your vehicle',
+                              padding: EdgeInsets.only(left: 10),
+                              child: (Text('Get 500 tokens for N3000 ',
                                   style: TextStyle(fontSize: 10))),
                             ),
                           ),
                         ],
                       ),
-                      decoration: BoxDecoration(color: Colors.black12),
+                      decoration: BoxDecoration(color: Color(0XFFFCFCFC)),
                     ),
                   ),
                   Expanded(
@@ -203,7 +209,7 @@ class TopUpPage extends StatelessWidget{
 
             //third one
             Container(
-              margin: EdgeInsets.only(top: 5, left:  20, right: 30),
+              margin: EdgeInsets.only(top: 5, left: 20, right: 30),
               child: Row(
                 children: <Widget>[
                   Container(
@@ -217,8 +223,12 @@ class TopUpPage extends StatelessWidget{
                           decoration: BoxDecoration(
                             color: Colors.indigo,
                           ),
-                          child: Text(
-                            '100 \nTokens'
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text('1,000', style: TextStyle(color: Colors.white, fontSize: 16),),
+                              Text('tokens', style: TextStyle(color: Colors.white, fontSize: 12),),
+                            ],
                           ),
                         )),
                   ),
@@ -231,30 +241,30 @@ class TopUpPage extends StatelessWidget{
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Container(
-                            margin: EdgeInsets.all(2),
+                            margin: EdgeInsets.only(left: 10, bottom: 4),
                             alignment: Alignment.centerLeft,
                             child: (Text(
-                              'Choose Duration',
-                              style: TextStyle(fontSize: 14),
+                              'N5000',
+                              style: TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.w800),
                             )),
                           ),
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Padding(
-                              padding: EdgeInsets.all(2),
-                              child: (Text('Touch here to set time duration ',
+                              padding: EdgeInsets.only(left: 10),
+                              child: (Text('Get 1000 tokens for N5000 ',
                                   style: TextStyle(fontSize: 10))),
                             ),
                           ),
                         ],
                       ),
-                      decoration: BoxDecoration(color: Colors.black12),
+                      decoration: BoxDecoration(color: Color(0XFFFCFCFC)),
                     ),
                   ),
                   Expanded(
                       flex: 2,
                       child: Container(
-                        
                         height: 70,
                         width: 150,
                         decoration: BoxDecoration(
@@ -268,15 +278,13 @@ class TopUpPage extends StatelessWidget{
                 ],
               ),
             ),
-          
-          //button
-          Container(
-            alignment: Alignment.center,
-            margin: EdgeInsets.all(20),
-            child: RaisedButton(
-              child: Text('PARK NOW')
-            ),
-          ),
+
+            //button
+            // Container(
+            //   alignment: Alignment.center,
+            //   margin: EdgeInsets.all(20),
+            //   child: RaisedButton(child: Text('PARK NOW')),
+            // ),
           ],
         ),
       ),

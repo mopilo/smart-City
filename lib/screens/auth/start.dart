@@ -33,7 +33,7 @@ class _WelcomePageState extends State<WelcomePage>{
 Widget number() => new Container(
     alignment: new Alignment(0.5, 0.5),
     height: 46.0,
-    margin: const EdgeInsets.only(left: 40.0,right: 40.0,bottom: 20.0),
+    margin: const EdgeInsets.only(left: 40.0,right: 40.0,bottom: 10.0),
     padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
         decoration:
             new BoxDecoration(
@@ -101,7 +101,7 @@ Widget number() => new Container(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children:<Widget> [
                               Padding(
-                                padding: EdgeInsets.all(20.0),
+                                padding: EdgeInsets.only(left:17.0, right: 17, bottom: 8),
                                 child: Text('Enter your phone number and email to recieve comfirmation code from smartcity',
                                   style: TextStyle(fontSize: 16.0, color: Colors.white),
                                   textAlign: TextAlign.center,

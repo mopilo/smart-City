@@ -64,7 +64,7 @@ class ParkPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Container(
-                            margin: EdgeInsets.only(top: 5, left:  20, right: 30),
+              margin: EdgeInsets.only(top: 5, left: 20, right: 30),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -91,13 +91,13 @@ class ParkPage extends StatelessWidget {
                     child: Container(
                       height: 70,
                       alignment: Alignment.centerLeft,
-                      decoration: BoxDecoration(color: Colors.black12),
+                      decoration: BoxDecoration(color: Color(0XFFFCFCFC)),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Container(
                             alignment: Alignment.centerLeft,
-                            margin: EdgeInsets.all(2),
+                            margin: EdgeInsets.only(left: 10, bottom: 4),
                             child: (Text(
                               'Choose Zone',
                               style: TextStyle(fontSize: 14),
@@ -106,7 +106,9 @@ class ParkPage extends StatelessWidget {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Padding(
-                              padding: EdgeInsets.all(2),
+                              padding: EdgeInsets.only(
+                                left: 10,
+                              ),
                               child: (Text('Touch here to set your zone',
                                   style: TextStyle(fontSize: 10))),
                             ),
@@ -134,25 +136,24 @@ class ParkPage extends StatelessWidget {
             // second
 
             Container(
-              margin: EdgeInsets.only(top: 5, left:  20, right: 30),
+              margin: EdgeInsets.only(top: 5, left: 20, right: 30),
               child: Row(
                 children: <Widget>[
                   Container(
                     // alignment: Alignment.center,
                     child: Expanded(
-                      flex: 2,
-                      child: Container(
-                        height: 70,
-                        width: 150,
-                        decoration: BoxDecoration(
-                          color: Colors.blueGrey,
-                        ),
-                        child: Icon(
-                          Icons.directions_car,
-                          color: Colors.white,
-                        ),
-                      )
-                    ),
+                        flex: 2,
+                        child: Container(
+                          height: 70,
+                          width: 150,
+                          decoration: BoxDecoration(
+                            color: Colors.blueGrey,
+                          ),
+                          child: Icon(
+                            Icons.directions_car,
+                            color: Colors.white,
+                          ),
+                        )),
                   ),
                   Expanded(
                     flex: 4,
@@ -163,7 +164,7 @@ class ParkPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Container(
-                            margin: EdgeInsets.all(2),
+                            margin: EdgeInsets.only(left: 10, bottom: 4),
                             alignment: Alignment.centerLeft,
                             child: (Text(
                               'Choose Vehicle',
@@ -173,14 +174,14 @@ class ParkPage extends StatelessWidget {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Padding(
-                              padding: EdgeInsets.all(2),
+                              padding: EdgeInsets.only(left: 10),
                               child: (Text('Touch here to set your vehicle',
                                   style: TextStyle(fontSize: 10))),
                             ),
                           ),
                         ],
                       ),
-                      decoration: BoxDecoration(color: Colors.black12),
+                      decoration: BoxDecoration(color: Color(0XFFFCFCFC)),
                     ),
                   ),
                   Expanded(
@@ -202,7 +203,7 @@ class ParkPage extends StatelessWidget {
 
             //third one
             Container(
-              margin: EdgeInsets.only(top: 5, left:  20, right: 30),
+              margin: EdgeInsets.only(top: 5, left: 20, right: 30),
               child: Row(
                 children: <Widget>[
                   Container(
@@ -210,7 +211,6 @@ class ParkPage extends StatelessWidget {
                     child: Expanded(
                         flex: 2,
                         child: Container(
-                          
                           height: 70,
                           width: 150,
                           decoration: BoxDecoration(
@@ -231,7 +231,7 @@ class ParkPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Container(
-                            margin: EdgeInsets.all(2),
+                            margin: EdgeInsets.only(left: 10, bottom: 4),
                             alignment: Alignment.centerLeft,
                             child: (Text(
                               'Choose Duration',
@@ -241,20 +241,19 @@ class ParkPage extends StatelessWidget {
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Padding(
-                              padding: EdgeInsets.all(2),
+                              padding: EdgeInsets.only(left: 10),
                               child: (Text('Touch here to set time duration ',
                                   style: TextStyle(fontSize: 10))),
                             ),
                           ),
                         ],
                       ),
-                      decoration: BoxDecoration(color: Colors.black12),
+                      decoration: BoxDecoration(color: Color(0XFFFCFCFC)),
                     ),
                   ),
                   Expanded(
                       flex: 2,
                       child: Container(
-                        
                         height: 70,
                         width: 150,
                         decoration: BoxDecoration(
@@ -268,15 +267,13 @@ class ParkPage extends StatelessWidget {
                 ],
               ),
             ),
-          
-          //button
-          Container(
-            alignment: Alignment.center,
-            margin: EdgeInsets.all(20),
-            child: RaisedButton(
-              child: Text('PARK NOW')
+
+            //button
+            Container(
+              alignment: Alignment.center,
+              margin: EdgeInsets.all(20),
+              child: RaisedButton(child: Text('PARK NOW')),
             ),
-          ),
           ],
         ),
       ),

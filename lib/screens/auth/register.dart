@@ -72,7 +72,7 @@ class RegisterPage extends StatelessWidget{
   Widget _yourUserName() => new Container(
     alignment: new Alignment(0.5, 0.5),
     height: 46.0,
-    margin: const EdgeInsets.only(left: 40.0,right: 40.0,bottom: 20.0),
+    margin: const EdgeInsets.only(left: 40.0,right: 40.0,bottom: 10.0),
     padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
         decoration:
             new BoxDecoration(
@@ -147,79 +147,82 @@ Widget _yourEmail() => new Container(
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.indigo,
-      body: Center(
-        child: new Container(
-          alignment: Alignment.center,
-          child: new Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: 10.0, right: 10.0),
-                child: Text('Enter your details and click register to complete registration process ',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 14.0, color: Colors.white ),
+      body: SingleChildScrollView(
+              child: Center(
+          child: new Container(
+            margin: EdgeInsets.only(top: 80),
+            alignment: Alignment.center,
+            child: new Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                  child: Text('Enter your details and click register to complete registration process ',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 14.0, color: Colors.white ),
+                  ),
                 ),
-              ),
-              
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.all(20.0),
-                  ),
-                  Icon(
-                    Icons.vpn_key,
-                    color: Colors.white,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 20.0),
-                  ),
-                  Text('Login information', style: TextStyle(color: Colors.white, fontSize: 12.0),)
-                ],
-              ),
-              // Expanded(
-              //   child: Column(
-              //     mainAxisAlignment: MainAxisAlignment.center,
-              //     crossAxisAlignment: CrossAxisAlignment.center,
-              //     children: <Widget>[
-                    _user(),
-                    _pass(),
-                    _cpass(),
-              //     ]
-              //   ),
-              // )
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.all(20.0),
+                    ),
+                    Icon(
+                      Icons.vpn_key,
+                      color: Colors.white,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 20.0),
+                    ),
+                    Text('Login information', style: TextStyle(color: Colors.white, fontSize: 12.0),)
+                  ],
+                ),
+                // Expanded(
+                //   child: Column(
+                //     mainAxisAlignment: MainAxisAlignment.center,
+                //     crossAxisAlignment: CrossAxisAlignment.center,
+                //     children: <Widget>[
+                      _user(),
+                      _pass(),
+                      _cpass(),
+                //     ]
+                //   ),
+                // )
 
-              Padding(
-                padding: EdgeInsets.only(top: 20.0),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.all(20.0),
-                  ),
-                  Icon(
-                    Icons.person,
-                    color: Colors.white,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 20.0),
-                  ),
-                  Text('Personal information', style: TextStyle(color: Colors.white, fontSize: 12.0),)
-                ],
-              ),
-              _yourUserName(),
-              _unknown(),
-              _yourEmail(),
-              loginButton(context),
-            ],
+                Padding(
+                  padding: EdgeInsets.only(top: 10.0),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.all(20.0),
+                    ),
+                    Icon(
+                      Icons.person,
+                      color: Colors.white,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 20.0),
+                    ),
+                    Text('Personal information', style: TextStyle(color: Colors.white, fontSize: 12.0),)
+                  ],
+                ),
+                _yourUserName(),
+                // _unknown(),
+                _yourEmail(),
+                loginButton(context),
+              ],
+            ),
           ),
         ),
       ),
