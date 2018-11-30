@@ -3,6 +3,9 @@ import 'package:flutter/services.dart';
 
 import 'package:smart_city/screens/auth/start.dart';
 import 'package:smart_city/routes.dart';
+import 'package:smart_city/screens/mainTab.dart';
+import 'package:smart_city/static/settings.dart';
+
 
 
 void main() {
@@ -23,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.lightBlue,
       ),
-      home: new WelcomePage(),
+      home: new Settings(),
       routes: routes
     );
   }

@@ -16,11 +16,11 @@ class MainPage extends StatelessWidget{
         child: Scaffold(
           bottomNavigationBar: TabBar(
             tabs: [
-              Tab(icon: Icon(Icons.local_parking, ), text: 'Park A Car'),
-              Tab(icon: Icon(Icons.local_car_wash,), text: 'Active Parking'),
-              Tab(icon: Icon(Icons.history,), text: 'History'),
-              Tab(icon: Icon(Icons.directions_car,), text: 'My Vehicles'),
-              Tab(icon: Icon(Icons.credit_card,), text: 'TopUp')
+              Tab(icon: Icon(Icons.local_parking, size: 20,), text: 'Park A Car'),
+              Tab(icon: Icon(Icons.local_car_wash, size: 20,), text: 'Active Parking'),
+              Tab(icon: Icon(Icons.history, size: 20,), text: 'History'),
+              Tab(icon: Icon(Icons.directions_car, size: 20,), text: 'My Vehicles'),
+              Tab(icon: Icon(Icons.credit_card, size: 20,), text: 'TopUp')
             ],
             labelColor:Colors.indigo,
             labelStyle: TextStyle(fontSize: 10.0),
