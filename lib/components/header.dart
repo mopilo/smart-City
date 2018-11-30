@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 class MyAppBar extends AppBar {
-  MyAppBar({Key key, Widget title})
+
+  MyAppBar({Key key, Widget title, BuildContext context})
       : super(
           key: key,
-          leading: IconButton(
-            icon: Icon(Icons.local_car_wash, color: Colors.white),
-            onPressed: () {},
+          leading: Icon(
+            Icons.local_car_wash,
+            color: Colors.white
           ),
           title: Text('Smart City'),
           centerTitle: true,
@@ -20,7 +21,8 @@ class MyAppBar extends AppBar {
               ),
               tooltip: 'Open shopping cart',
               onPressed: () {
-                // ...
+                    // Navigator.of(context).pushReplacementNamed("/settings");
+                    print('object');
               },
             ),
           ],
