@@ -219,7 +219,9 @@ class ParkPage extends StatelessWidget {
             Container(
               alignment: Alignment.center,
               margin: EdgeInsets.all(20),
-              child: RaisedButton(child: Text('PARK NOW')),
+              child: RaisedButton(
+                onPressed: (){},
+                child: Text('PARK NOW')),
             ),
           ],
         ),
