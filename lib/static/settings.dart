@@ -19,16 +19,16 @@ class Settings extends StatelessWidget {
           child: Column(
             children: <Widget>[
               GestureDetector(
-                onTap: (){print('play');},
-                              child: Container(
-                  margin: EdgeInsets.all( 20 ),
+                onTap: () {
+                  Navigator.of(context).pushNamed("/profile");
+                },
+                child: Container(
+                  margin: EdgeInsets.all(20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     mainAxisSize: MainAxisSize.max,
                     children: <Widget>[
-                      Icon(
-                        Icons.person_outline
-                      ),
+                      Icon(Icons.person_outline),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text('Profile'),
@@ -39,14 +39,14 @@ class Settings extends StatelessWidget {
               ),
               Divider(),
               GestureDetector(
-                onTap: (){}, 
-                              child: Padding(
-                  padding: EdgeInsets.all( 20 ),
+                onTap: () {
+                  Navigator.of(context).pushNamed("/profile");
+                },
+                child: Padding(
+                  padding: EdgeInsets.all(20),
                   child: Row(
                     children: <Widget>[
-                      Icon(
-                        Icons.language
-                      ),
+                      Icon(Icons.language),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text('Language'),
@@ -57,12 +57,10 @@ class Settings extends StatelessWidget {
               ),
               Divider(),
               Padding(
-                padding: EdgeInsets.all( 20 ),
+                padding: EdgeInsets.all(20),
                 child: Row(
                   children: <Widget>[
-                    Icon(
-                      Icons.insert_invitation
-                    ),
+                    Icon(Icons.insert_invitation),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text('Invite Friends'),
@@ -72,12 +70,10 @@ class Settings extends StatelessWidget {
               ),
               Divider(),
               Padding(
-                padding: EdgeInsets.all( 20 ),
+                padding: EdgeInsets.all(20),
                 child: Row(
                   children: <Widget>[
-                    Icon(
-                      Icons.info_outline
-                    ),
+                    Icon(Icons.info_outline),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text('About'),
