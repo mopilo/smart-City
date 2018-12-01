@@ -5,6 +5,7 @@ import 'package:smart_city/screens/auth/register.dart';
 import 'package:smart_city/screens/auth/login.dart';
 import 'package:smart_city/screens/mainTab.dart';
 import 'package:smart_city/static/settings.dart';
+import 'package:smart_city/static/static_screen/profile.dart';
 
 final routes = {
   "/start": (BuildContext context) => new WelcomePage(),
@@ -13,4 +14,6 @@ final routes = {
   "/login": (BuildContext context) => new LoginPage(),
   "/tabs": (BuildContext context) => new MainPage(),
   "/settings": (BuildContext context) => new Settings(),
+    "/profile": (BuildContext context) => new Profile(),
+
 };
