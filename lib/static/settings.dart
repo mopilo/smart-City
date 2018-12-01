@@ -44,14 +44,12 @@ class Settings extends StatelessWidget {
                 onTap: () {
                   AlertDialog alertDialog = new AlertDialog(
                     title: new Text('Email is not valid'),
-                    content: Row(
-                      children: [
-                        Radio(
-                          activeColor: Colors.green,
-                        ),
-                        Text('English')
-                      ]
-                    ),
+                    content: Row(children: [
+                      Radio(
+                        activeColor: Colors.green,
+                      ),
+                      Text('English')
+                    ]),
                     actions: <Widget>[
                       new FlatButton(
                         onPressed: () => Navigator.of(context).pop(),
@@ -88,16 +86,21 @@ class Settings extends StatelessWidget {
                 ),
               ),
               Divider(),
-              Padding(
-                padding: EdgeInsets.all(20),
-                child: Row(
-                  children: <Widget>[
-                    Icon(Icons.info_outline),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text('About'),
-                    )
-                  ],
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pushNamed("/about");
+                },
+                child: Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Row(
+                    children: <Widget>[
+                      Icon(Icons.info_outline),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text('About'),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ],
