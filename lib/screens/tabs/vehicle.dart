@@ -153,7 +153,7 @@ class _VehiclesPageState extends State<VehiclesPage> {
                                         var dbHelper = DBHelper();
                                         dbHelper
                                             .deleteCar(snapshot.data[index]);
-                                            setState(() {
+                                        setState(() {
                                           getCarFromDB();
                                         });
                                         Fluttertoast.showToast(
@@ -162,7 +162,6 @@ class _VehiclesPageState extends State<VehiclesPage> {
                                             bgcolor: '#000000',
                                             gravity: ToastGravity.CENTER,
                                             textcolor: '#FFFFFF');
-                                        
                                       },
                                     ),
                                   )),

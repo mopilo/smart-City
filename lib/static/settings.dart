@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Settings extends StatelessWidget {
+  get context => null;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +42,24 @@ class Settings extends StatelessWidget {
               Divider(),
               GestureDetector(
                 onTap: () {
-                  Navigator.of(context).pushNamed("/profile");
+                  AlertDialog alertDialog = new AlertDialog(
+                    title: new Text('Email is not valid'),
+                    content: Row(
+                      children: [
+                        Radio(
+                          activeColor: Colors.green,
+                        ),
+                        Text('English')
+                      ]
+                    ),
+                    actions: <Widget>[
+                      new FlatButton(
+                        onPressed: () => Navigator.of(context).pop(),
+                        child: Text('OK'),
+                      )
+                    ],
+                  );
+                  showDialog(context: context, child: alertDialog);
                 },
                 child: Padding(
                   padding: EdgeInsets.all(20),
