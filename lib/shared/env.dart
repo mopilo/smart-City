@@ -6,7 +6,7 @@ import 'package:smart_city/shared/shared_store.dart';
 class Env {
   Env();
 
-  String apiUrl= "https://jollypredict.com/api";
+  String apiUrl= "https://smartcitynigeria.azurewebsites.net";
 
   Future<Map> getAuthHeader() async {
     var token =  await SharedStore().getToken() ;

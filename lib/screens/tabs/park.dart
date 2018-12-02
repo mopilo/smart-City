@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:smart_city/components/header.dart';
+import 'package:smart_city/database/DBHelper.dart';
+import 'package:smart_city/models/car.dart';
+
+Future<List<Car>> getCarFromDB() async {
+  var dbHelper = DBHelper();
+  Future<List<Car>> cars = dbHelper.getCar();
+  return cars;
+}
+
 class ParkPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -139,9 +148,50 @@ class ParkPage extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: Colors.white,
                         ),
-                        child: Icon(
-                          Icons.arrow_forward_ios,
+                        child: IconButton(
+                          icon: Icon(Icons.arrow_forward_ios),
                           color: Colors.black,
+                          onPressed: () {
+                            // AlertDialog alertDialog = new AlertDialog(
+                            //   title: new Text("Choose Vehicle"),
+                            //   content: FutureBuilder<List<Car>>(
+                            //       future: getCarFromDB(),
+                            //       builder: (context, snapshot) {
+                            //         if (snapshot != null) {
+                            //           if (snapshot.data.length == 0) {
+                            //             Container();
+
+                            //             return ListView.builder(
+                            //                 itemCount: snapshot.data.length,
+                            //                 itemBuilder: (context, index) {
+                            //                   return Container(
+                            //                     alignment: Alignment.center,
+                            //                     child: Row(
+                            //                       children: <Widget>[
+                            //                         Radio(),
+                            //                         Text(
+                            //                           snapshot.data[index]
+                            //                               .car_model,
+                            //                         ),
+                            //                       ],
+                            //                     ),
+                            //                   );
+                            //                 });
+                            //           }
+                            //           return new Container(
+                            //               alignment: Alignment.center,
+                            //               child: CircularProgressIndicator());
+                            //         }
+                            //       }),
+                            //   actions: <Widget>[
+                            //     new FlatButton(
+                            //       // onPressed: () => Navigator.pop(context),
+                            //       child: Text('OK'),
+                            //     )
+                            //   ],
+                            // );
+                            // showDialog(context: context, child: alertDialog);
+                          },
                         ),
                       )),
                 ],
@@ -219,9 +269,7 @@ class ParkPage extends StatelessWidget {
             Container(
               alignment: Alignment.center,
               margin: EdgeInsets.all(20),
-              child: RaisedButton(
-                onPressed: (){},
-                child: Text('PARK NOW')),
+              child: RaisedButton(onPressed: () {}, child: Text('PARK NOW')),
             ),
           ],
         ),
