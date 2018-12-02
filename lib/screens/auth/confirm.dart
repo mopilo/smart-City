@@ -1,5 +1,9 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
+import 'package:flutter/material.dart';
+import 'package:smart_city/shared/env.dart';
+import 'package:http/http.dart' as http;
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ConfirmationPage extends StatefulWidget{
   @override
@@ -7,7 +11,7 @@ class ConfirmationPage extends StatefulWidget{
 }
 
 class _ConfirmationPageState extends State<ConfirmationPage>{
-
+  String url = Env().apiUrl;
   final TextEditingController _number = new TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -106,6 +110,7 @@ Widget number() => new Container(
           
     Future<String> confirm() async{
       var token = _number.text.trim();
+      var data; 
       if(token == ''){
         AlertDialog alertDialog = new AlertDialog(
           title: new Text("Input can't be empty"),
@@ -115,9 +120,9 @@ Widget number() => new Container(
         );
         showDialog(context: context, child: alertDialog);
       }
-      else if(token.length < 2){
+      else if(token.length < 4){
         AlertDialog alertDialog = new AlertDialog(
-          title: new Text('The token must be atleast 4 characters'),
+          title: new Text('invalid token'),
           actions: <Widget>[
             new FlatButton(onPressed: () => Navigator.pop(context), child: Text('OK'),)
           ],
@@ -125,7 +130,71 @@ Widget number() => new Container(
         showDialog(context: context, child: alertDialog);
       }
       else{
+showDialog(
+        context: context,
+        barrierDismissible: false,
+        child: new Dialog(
+          child: Container(
+            height: 100,
+            child: new Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(20),
+                  child: new CircularProgressIndicator(),
+                ),
+                new Text("Confirming..."),
+              ],
+            ),
+          ),
+        ),
+      );
+      Map body = {'Code': token};
+      await Env().getHeader().then((Map header) {
+        var response = http
+            .post(Uri.encodeFull("$url/User/ComFirmCode"),
+                headers: header, body: body)
+            .then((response) {
+          Map responseJson = json.decode(response.body);
+          if (response.statusCode == 200) {
+            if (responseJson.containsKey('message')) {
+              Fluttertoast.showToast(
+                  msg: responseJson['message'],
+                  toastLength: Toast.LENGTH_LONG,
+                  bgcolor: '#000000',
+                  gravity: ToastGravity.BOTTOM,
+                  textcolor: '#FFFFFF');
+                  data = responseJson['data']['UserDetails'].length;
+                  for(int i=0; i < data; i++){
+                    if(responseJson['data']['UserDetails'][i] == 'UserID'){
+                      print(responseJson['data']['UserDetails'][i]);
+                    }
+                  }
+                  print('object');
+              print(responseJson['data']['SecurityID']);
+              new Future<bool>.delayed(new Duration(seconds: 3), () {
+                Navigator.pop(context); //pop dialog
         Navigator.of(context).pushReplacementNamed("/register");
+              });
+            }
+          } else {
+            AlertDialog dialog = new AlertDialog(
+              title: new Text("Confirmation Failed, Retry Again"),
+              actions: <Widget>[
+                new FlatButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: Text('OK'),
+                )
+              ],
+            );
+            Navigator.pop(context); //pop dialog
+            showDialog(context: context, child: dialog);
+          }
+        });
+      });
+
+        // Navigator.of(context).pushReplacementNamed("/register");
       }
 
     }
