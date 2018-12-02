@@ -21,7 +21,7 @@ class MyAppBar extends AppBar {
               ),
               tooltip: 'Open shopping cart',
               onPressed: () {
-                    // Navigator.of(context).pushReplacementNamed("/settings");
+                    Navigator.of(context).pushNamed("/about");
                     print('object');
               },
             ),
