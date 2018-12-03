@@ -17,7 +17,7 @@ class HistoryPage extends StatelessWidget {
           onPressed: () {},
         ),
         title: (Text(
-          'Smart City',
+          'Parkcrowdy',
         )),
         actions: <Widget>[
           IconButton(

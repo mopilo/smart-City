@@ -37,7 +37,7 @@ class _VehiclesPageState extends State<VehiclesPage> {
           onPressed: () {},
         ),
         title: (Text(
-          'Smart City',
+          'Parkcrowdy',
         )),
         actions: <Widget>[
           IconButton(

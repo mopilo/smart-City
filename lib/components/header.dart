@@ -9,7 +9,7 @@ class MyAppBar extends AppBar {
             Icons.local_car_wash,
             color: Colors.white
           ),
-          title: Text('Smart City'),
+          title: Text('Parkcrowdy'),
           centerTitle: true,
           backgroundColor: Colors.indigo,
           elevation: 0.0,

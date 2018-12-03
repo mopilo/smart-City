@@ -10,7 +10,7 @@ class About extends StatelessWidget {
           centerTitle: true,
           backgroundColor: Colors.indigo,
           title: Text(
-            'About ParkCrowdy',
+            'About Parkcrowdy',
             style: TextStyle(color: Colors.white),
           ),
           leading: IconButton(
