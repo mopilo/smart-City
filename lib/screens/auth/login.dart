@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:smart_city/shared/env.dart';
 import 'package:http/http.dart' as http;
 
@@ -157,7 +158,21 @@ var response = http
                 headers: header, body: body)
             .then((response) {
                Map responseJson = json.decode(response.body);
-          if (response.statusCode == 200) {}
+          if (response.statusCode == 200) {
+            if (responseJson.containsKey('message')) {
+              Fluttertoast.showToast(
+                  msg: responseJson['message'],
+                  toastLength: Toast.LENGTH_LONG,
+                  bgcolor: '#000000',
+                  gravity: ToastGravity.BOTTOM,
+                  textcolor: '#FFFFFF');
+
+              new Future<bool>.delayed(new Duration(seconds: 3), () {
+                Navigator.pop(context); //pop dialog
+                Navigator.of(context).pushReplacementNamed("/tabs");
+              });
+            }
+          }
           else {
             AlertDialog dialog = new AlertDialog(
               title: new Text("Authentication Failed, Retry Again"),

@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.lightBlue,
       ),
-      home: RegisterPage(),
+      home: LoginPage(),
       routes: routes
     );
   }

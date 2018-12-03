@@ -37,15 +37,46 @@ class SharedStore {
   //  return data;
   // }
 
-  Future getData() async{
+  Future getUserId() async{
     var user;
    final prefs = await SharedPreferences.getInstance().then((response){
-       user =  response.getString('data');
+       user =  response.getString('userid');
    });
    
    var data =  json.decode(user);
    return data;
   }
+
+  Future getSId() async{
+    var sec;
+   final prefs = await SharedPreferences.getInstance().then((response){
+       sec =  response.getString('sid');
+   });
+   
+   var data =  json.decode(sec);
+   return data;
+  }
+
+  Future getRole() async{
+    var role;
+   final prefs = await SharedPreferences.getInstance().then((response){
+       role =  response.getString('role');
+   });
+   
+   var data =  json.decode(role);
+   return data;
+  }
+
+  Future getEmail() async{
+    var email;
+   final prefs = await SharedPreferences.getInstance().then((response){
+       email =  response.getString('email');
+   });
+   
+   var data =  json.decode(email);
+   return data;
+  }
+
 
   //TODO escape not allowed characters eg. ' " '
   /// Inserts or replaces the book.

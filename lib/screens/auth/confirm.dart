@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_city/shared/env.dart';
 import 'package:http/http.dart' as http;
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:smart_city/shared/shared_store.dart';
 
 class ConfirmationPage extends StatefulWidget {
   @override
@@ -154,7 +155,27 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
                 headers: header, body: body)
             .then((response) {
           Map responseJson = json.decode(response.body);
+                    var data = json.decode(response.body);
+
           if (response.statusCode == 200) {
+            Map storeSecurityID = {
+              'key': 'sid',
+              'value': json.encode(data['data']['SecurityID'])
+            };
+            Map storeUserID = {
+              'key': 'userid',
+              'value': json.encode(data['data']['UserDetails'][0]['UserID'])
+            };
+
+            Map storeEmail = {
+              'key': 'email',
+              'value': json.encode(data['data']['UserDetails'][0]['Email'])
+            };
+
+            SharedStore().updateStore(storeSecurityID);
+            SharedStore().updateStore(storeUserID);
+            SharedStore().updateStore(storeEmail);
+
             if (responseJson.containsKey('message')) {
               Fluttertoast.showToast(
                   msg: responseJson['message'],
@@ -162,14 +183,7 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
                   bgcolor: '#000000',
                   gravity: ToastGravity.BOTTOM,
                   textcolor: '#FFFFFF');
-              data = responseJson['data']['UserDetails'].length;
-              for (int i = 0; i < data; i++) {
-                if (responseJson['data']['UserDetails'][i] == 'UserID') {
-                  print(responseJson['data']['UserDetails'][i]);
-                }
-              }
-              print('object');
-              print(responseJson['data']['SecurityID']);
+
               new Future<bool>.delayed(new Duration(seconds: 3), () {
                 Navigator.pop(context); //pop dialog
                 Navigator.of(context).pushReplacementNamed("/register");

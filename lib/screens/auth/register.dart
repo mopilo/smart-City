@@ -1,8 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smart_city/shared/env.dart';
 import 'package:http/http.dart' as http;
+import 'package:smart_city/shared/shared_store.dart';
 
 class RegisterPage extends StatefulWidget {
   _RegisterPageState createState() => new _RegisterPageState();
@@ -16,7 +19,8 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _lastName = new TextEditingController();
   final List<String> _items = ['User', 'Admin'].toList();
   String url = Env().apiUrl;
-
+  var email;
+  var userId;
   String _selection;
 //login info
 
@@ -24,6 +28,7 @@ class _RegisterPageState extends State<RegisterPage> {
   void initState() {
     _selection = _items.first;
     super.initState();
+    _load();
   }
 
   Widget _user() => new Container(
@@ -115,7 +120,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 return new DropdownMenuItem<String>(
                   value: value,
                   child: new Text(
-                    value, 
+                    value,
                   ),
                 );
               }).toList(),
@@ -186,7 +191,6 @@ class _RegisterPageState extends State<RegisterPage> {
                     style: TextStyle(fontSize: 14.0, color: Colors.white),
                   ),
                 ),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   mainAxisSize: MainAxisSize.max,
@@ -208,7 +212,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     )
                   ],
                 ),
-                _user(), _pass(), _cpass(),
+                _user(),
+                _pass(),
+                _cpass(),
                 Padding(
                   padding: EdgeInsets.only(top: 10.0),
                 ),
@@ -246,6 +252,9 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Future<String> register() async {
+    print('anserr');
+    print(email);
+    print(userId);
     var username = _username.text.trim();
     var password = _password.text.trim();
     var cpassword = _cpassword.text.trim();
@@ -267,9 +276,7 @@ class _RegisterPageState extends State<RegisterPage> {
         ],
       );
       showDialog(context: context, child: alertDialog);
-    }
-
-    else if (password != cpassword ) {
+    } else if (password != cpassword) {
       AlertDialog alertDialog = new AlertDialog(
         title: new Text("Password mismatch"),
         actions: <Widget>[
@@ -280,8 +287,7 @@ class _RegisterPageState extends State<RegisterPage> {
         ],
       );
       showDialog(context: context, child: alertDialog);
-    }
-    else{
+    } else {
       showDialog(
         context: context,
         barrierDismissible: false,
@@ -302,18 +308,48 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
         ),
       );
-//get username and email from sharedpreference
-    Map body = {'UserID':'', 'Email': '', 'UserName': username, 
-    'Password': password, 'RoleName': _selection, 'FirstName': firstname, 'LastName': lastname};
+      //get username and email from sharedpreference
+      Map body = {
+        'UserID': userId.toString(),
+        'Email': email,
+        'UserName': username,
+        'Password': password,
+        'RoleName': _selection,
+        'FirstName': firstname,
+        'LastName': lastname
+      };
 
-          await Env().getHeader().then((Map header) {
-  var response = http
+      await Env().getHeader().then((Map header) {
+        var response = http
             .post(Uri.encodeFull("$url/User/Register"),
                 headers: header, body: body)
             .then((response) {
-                        Map responseJson = json.decode(response.body);
-          if (response.statusCode == 200) {}
-          else {
+          Map responseJson = json.decode(response.body);
+          var data = json.decode(response.body);
+
+          if (response.statusCode == 200) {
+            Map storeUserRole = {
+              'key': 'role',
+              'value': json.encode(data['data']['UserDetails'][0]['RoleName'])
+            };
+            SharedStore().updateStore(storeUserRole);
+
+
+            if (responseJson.containsKey('message')) {
+              Fluttertoast.showToast(
+                  msg: responseJson['message'],
+                  toastLength: Toast.LENGTH_LONG,
+                  bgcolor: '#000000',
+                  gravity: ToastGravity.BOTTOM,
+                  textcolor: '#FFFFFF');
+
+              new Future<bool>.delayed(new Duration(seconds: 3), () {
+                Navigator.pop(context); //pop dialog
+                Navigator.of(context).pushReplacementNamed("/login");
+              });
+            }
+          } else {
+            print(responseJson);
             AlertDialog dialog = new AlertDialog(
               title: new Text("Authentication Failed, Retry Again"),
               actions: <Widget>[
@@ -326,8 +362,32 @@ class _RegisterPageState extends State<RegisterPage> {
             Navigator.pop(context); //pop dialog
             showDialog(context: context, child: dialog);
           }
-            });
-          });
+        });
+      });
+    }
+  }
 
-  }}
+  _load() async {
+    var emailAddress = SharedStore().getEmail().then((response) {
+      if (response != null) {
+        setState(() {
+          email = response;
+        });
+        print('object');
+        print(email);
+      }
+      return;
+    });
+
+    var id = SharedStore().getUserId().then((res) {
+      if (res != null) {
+        setState(() {
+          userId = res;
+        });
+        print('object');
+        print(userId);
+      }
+      return;
+    });
+  }
 }

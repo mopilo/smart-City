@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_city/shared/env.dart';
 import 'package:http/http.dart' as http;
 import 'package:fluttertoast/fluttertoast.dart';
-
+import 'package:smart_city/shared/shared_store.dart';
 class WelcomePage extends StatefulWidget {
   @override
   _WelcomePageState createState() => new _WelcomePageState();
@@ -132,7 +132,7 @@ class _WelcomePageState extends State<WelcomePage> {
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
     var email = _email.text.trim();
     var phone = _number.text.trim();
-
+    var data;
     RegExp exp = new RegExp(regEmail);
 
     if (email == '' || phone == '') {
@@ -196,7 +196,10 @@ class _WelcomePageState extends State<WelcomePage> {
                 headers: header, body: body)
             .then((response) {
           Map responseJson = json.decode(response.body);
+          var data = json.decode(response.body);
+
           if (response.statusCode == 200) {
+            print(responseJson['data']['Email']);
             if (responseJson.containsKey('message')) {
               Fluttertoast.showToast(
                   msg: responseJson['message'],
@@ -204,13 +207,14 @@ class _WelcomePageState extends State<WelcomePage> {
                   bgcolor: '#000000',
                   gravity: ToastGravity.BOTTOM,
                   textcolor: '#FFFFFF');
-              print(responseJson['message']);
+              
               new Future<bool>.delayed(new Duration(seconds: 3), () {
                 Navigator.pop(context); //pop dialog
                     Navigator.of(context).pushReplacementNamed("/confirm");
               });
             }
           } else {
+            print(responseJson);
             AlertDialog dialog = new AlertDialog(
               title: new Text("Authenticated Failed"),
               actions: <Widget>[
