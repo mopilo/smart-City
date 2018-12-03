@@ -20,6 +20,12 @@ class ParkPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Container(
+               decoration: BoxDecoration(
+                boxShadow: [new BoxShadow(
+          color: Colors.grey,
+          blurRadius: 0.5,
+        ),
+                ]),
               margin: EdgeInsets.only(top: 5, left: 20, right: 30),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -92,6 +98,12 @@ class ParkPage extends StatelessWidget {
             // second
 
             Container(
+              decoration: BoxDecoration(
+                boxShadow: [new BoxShadow(
+          color: Colors.grey,
+          blurRadius: 0.5,
+        ),
+                ]),
               margin: EdgeInsets.only(top: 5, left: 20, right: 30),
               child: Row(
                 children: <Widget>[
@@ -200,6 +212,12 @@ class ParkPage extends StatelessWidget {
 
             //third one
             Container(
+               decoration: BoxDecoration(
+                boxShadow: [new BoxShadow(
+          color: Colors.grey,
+          blurRadius: 0.5,
+        ),
+                ]),
               margin: EdgeInsets.only(top: 5, left: 20, right: 30),
               child: Row(
                 children: <Widget>[
