@@ -68,11 +68,11 @@ class _LoginPageState extends State<LoginPage> {
 
     final forgotLabel = FlatButton(
       child: Text(
-        'Don"t have an account?',
+        "Don't have an account?",
         style: TextStyle(color: Colors.white),
       ),
       onPressed: () {
-        Navigator.of(context).pushReplacementNamed("/register");
+        Navigator.of(context).pushNamed("/start");
       },
     );
 
@@ -169,7 +169,7 @@ var response = http
 
               new Future<bool>.delayed(new Duration(seconds: 3), () {
                 Navigator.pop(context); //pop dialog
-                Navigator.of(context).pushReplacementNamed("/tabs");
+                Navigator.of(context).popAndPushNamed("/tabs");
               });
             }
           }

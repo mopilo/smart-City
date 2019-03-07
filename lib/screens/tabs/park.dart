@@ -9,11 +9,16 @@ Future<List<Car>> getCarFromDB() async {
   return cars;
 }
 
-class ParkPage extends StatelessWidget {
+class ParkPage extends StatefulWidget {
+  @override
+  _ParkPageState createState() => new _ParkPageState();
+
+}
+class _ParkPageState extends State<ParkPage>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(),
+      appBar: MyAppBar(context: context),
       body: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

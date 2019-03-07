@@ -5,7 +5,7 @@ class TopUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new MyAppBar(),
+      appBar: new MyAppBar(context: context,),
       body: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

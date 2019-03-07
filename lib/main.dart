@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:smart_city/screens/auth/confirm.dart';
 import 'package:smart_city/screens/auth/login.dart';
-import 'package:smart_city/screens/auth/register.dart';
-
-import 'package:smart_city/screens/auth/start.dart';
 import 'package:smart_city/routes.dart';
-import 'package:smart_city/screens/mainTab.dart';
-import 'package:smart_city/static/settings.dart';
 
 
 

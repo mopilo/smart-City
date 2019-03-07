@@ -345,7 +345,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
               new Future<bool>.delayed(new Duration(seconds: 3), () {
                 Navigator.pop(context); //pop dialog
-                Navigator.of(context).pushReplacementNamed("/login");
+                Navigator.of(context).pushNamed("/login");
               });
             }
           } else {

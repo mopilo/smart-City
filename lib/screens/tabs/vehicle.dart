@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_city/database/DBHelper.dart';
 import 'package:smart_city/models/car.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:smart_city/static/settings.dart';
 
 Future<List<Car>> getCarFromDB() async {
   var dbHelper = DBHelper();
@@ -47,8 +48,8 @@ class _VehiclesPageState extends State<VehiclesPage> {
             ),
             tooltip: 'Open shopping cart',
             onPressed: () {
-              // ...
-            },
+              Navigator.push(context,
+                  new MaterialPageRoute(builder: (__) => new Settings()));            },
           ),
         ],
       ),

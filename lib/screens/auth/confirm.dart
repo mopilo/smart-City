@@ -54,7 +54,9 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
         'Already have an account?',
         style: TextStyle(color: Colors.white),
       ),
-      onPressed: () {},
+      onPressed: () {
+          Navigator.of(context).popAndPushNamed("/login");
+      },
     );
 
     return Scaffold(
@@ -186,7 +188,7 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
 
               new Future<bool>.delayed(new Duration(seconds: 3), () {
                 Navigator.pop(context); //pop dialog
-                Navigator.of(context).pushReplacementNamed("/register");
+                Navigator.of(context).pushNamed("/register");
               });
             }
           } else {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:smart_city/screens/tabs/vehicleTabs/park_history.dart';
 import 'package:smart_city/screens/tabs/vehicleTabs/topUp_history.dart';
-
+import 'package:smart_city/static/settings.dart';
 
 class HistoryPage extends StatelessWidget {
   @override
@@ -27,7 +27,8 @@ class HistoryPage extends StatelessWidget {
             ),
             tooltip: 'Open shopping cart',
             onPressed: () {
-              // ...
+              Navigator.push(context,
+                  new MaterialPageRoute(builder: (__) => new Settings()));
             },
           ),
         ],
@@ -52,12 +53,7 @@ class HistoryPage extends StatelessWidget {
                 )),
           ),
           Expanded(
-            child: TabBarView(
-              children: [
-                ParkHistory(),
-                TopUpHistory()
-              ]
-            ),
+            child: TabBarView(children: [ParkHistory(), TopUpHistory()]),
           ),
         ]),
       ),

@@ -5,7 +5,7 @@ class ActiveParkPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(),
+      appBar: MyAppBar(context: context),
       body: Container(
         margin: EdgeInsets.only(top: 5, left: 20, right: 30),
         child: Row(

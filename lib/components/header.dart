@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:smart_city/static/settings.dart';
 
 class MyAppBar extends AppBar {
 
-  MyAppBar({Key key, Widget title, BuildContext context})
+  MyAppBar({Key key, Widget title, context})
       : super(
           key: key,
           leading: Icon(
@@ -21,8 +22,11 @@ class MyAppBar extends AppBar {
               ),
               tooltip: 'Open shopping cart',
               onPressed: () {
-                    Navigator.of(context).pushNamed("/about");
+                    // Navigator.of(context).pushNamed("/about");
                     print('object');
+                    Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) => 
+                new Settings()
+           ));
               },
             ),
           ],

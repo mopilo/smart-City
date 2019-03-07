@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:smart_city/static/static_screen/about.dart';
+import 'package:smart_city/static/static_screen/profile.dart';
 
 class Settings extends StatelessWidget {
   get context => null;
@@ -22,8 +24,8 @@ class Settings extends StatelessWidget {
             children: <Widget>[
               GestureDetector(
                 onTap: () {
-                  Navigator.of(context).pushNamed("/profile");
-                },
+              Navigator.push(context,
+                  new MaterialPageRoute(builder: (__) => new Profile()));                },
                 child: Container(
                   margin: EdgeInsets.all(20),
                   child: Row(
@@ -52,7 +54,7 @@ class Settings extends StatelessWidget {
                     ]),
                     actions: <Widget>[
                       new FlatButton(
-                        onPressed: () => Navigator.of(context).pop(),
+                        // onPressed: () => Navigator.of(context).pop(),
                         child: Text('OK'),
                       )
                     ],
@@ -88,8 +90,8 @@ class Settings extends StatelessWidget {
               Divider(),
               GestureDetector(
                 onTap: () {
-                  Navigator.of(context).pushNamed("/about");
-                },
+              Navigator.push(context,
+                  new MaterialPageRoute(builder: (__) => new About()));                },
                 child: Padding(
                   padding: EdgeInsets.all(20),
                   child: Row(

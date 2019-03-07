@@ -74,7 +74,9 @@ class _WelcomePageState extends State<WelcomePage> {
         'Already have an account?',
         style: TextStyle(color: Colors.white),
       ),
-      onPressed: () {},
+      onPressed: () {
+                Navigator.of(context).popAndPushNamed("/login");
+      },
     );
 
     return Scaffold(
@@ -210,7 +212,7 @@ class _WelcomePageState extends State<WelcomePage> {
               
               new Future<bool>.delayed(new Duration(seconds: 3), () {
                 Navigator.pop(context); //pop dialog
-                    Navigator.of(context).pushReplacementNamed("/confirm");
+                    Navigator.of(context).pushNamed("/confirm");
               });
             }
           } else {
