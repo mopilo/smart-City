@@ -5,6 +5,8 @@ Is an app that tries to automate how cars are being parked in Nigeria.
 
 #see screenshots
 
+<img src='https://user-images.githubusercontent.com/7842458/53991215-6591da00-412a-11e9-9e7f-92d408ecf550.png' height='400' >
+
 ![screenshot_1547068517](https://user-images.githubusercontent.com/7842458/53991215-6591da00-412a-11e9-9e7f-92d408ecf550.png)
 
 ![screenshot_1547068513](https://user-images.githubusercontent.com/7842458/53991314-983bd280-412a-11e9-93c2-90e848c6d395.png)
